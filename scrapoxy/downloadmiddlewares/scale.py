@@ -43,6 +43,9 @@ class ScaleMiddleware(object):
         spider.logger.debug(u'[ScaleMiddleware] Upscale Scrapoxy')
 
         min_sc, required_sc, max_sc = self._commander.get_scaling()
+        if required_sc == max_sc:
+            return
+
         required_sc = max_sc
 
         self._commander.update_scaling(min_sc, required_sc, max_sc)
